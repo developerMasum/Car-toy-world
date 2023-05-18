@@ -1,31 +1,67 @@
-import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-
+import React, { useEffect, useState } from 'react';
+import ToyCard from '../AllToy/ToyCard';
 
 const CategoriesTab = () => {
-  
-    return (
-        <div>
-             <Tabs>
-    <TabList>
-      <Tab>Racing Car</Tab>
-      <Tab>Tructor</Tab>
-      <Tab>Music Car</Tab>
-    </TabList>
+  const [jobs, setJob] = useState([]);
+  const [activeTab, setActiveTab] = useState(" ");
 
-    <TabPanel>
-      <h2>Any content 1</h2>
-    </TabPanel>
-    <TabPanel>
-      <h2>Any content 2</h2>
-    </TabPanel>
-    <TabPanel>
-      <h2>Any content 3</h2>
-    </TabPanel>
-  </Tabs>
+  useEffect(() => {
+    fetch(`http://localhost:5000/allToysByCategory/${activeTab}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setJob(result);
+      });
+  }, [activeTab]);
+//   const result =  jobs.filter(job=> job.sub_category == activeTab);
+//  setJob(result);
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName); }
+
+
+  
+  return (
+    <div>
+    <h1 className="text-3xl font-extrabold text-center mb-5">Pick By <span className=' text-red-300'>Sub-Category</span></h1>
+    <div className=" text-center flex align-middle justify-center">
+      <div className="text-center w-100 mx-auto">
+        <div className="tabs ">
+          <div
+            onClick={() => handleTabClick("TRACTOR")}
+            className={`tab  tab2 remote ${
+              activeTab == "TRACTOR" ? "btn btn-warning active" : "btn btn-error"
+            }`}
+          >
+          <button className=''>Tractor</button>
+          </div>
+          <div
+            onClick={() => handleTabClick("racing")}
+            className={`tab  tab2 Offline ${
+              activeTab == "racing" ? " btn btn-warning" : "btn btn-error"
+            }`}
+          >
+          Racing Car
+          </div>
+          <div
+            onClick={() => handleTabClick("Dancing")}
+            className={`tab  tab2 Offline ${
+              activeTab == "Dancing" ? " btn btn-warning" : "btn btn-error"
+            }`}
+          >
+          Music Car
+          </div>
         </div>
-    );
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 mt-3 my-container ">
+      {jobs?.map((toy) => (
+        <ToyCard
+        key={toy._id}
+        toy={toy}></ToyCard>
+      ))}
+    </div>
+  </div>
+  );
 };
 
 export default CategoriesTab;
