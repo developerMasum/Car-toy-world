@@ -5,17 +5,17 @@ import { AiFillCar } from "react-icons/ai";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
-  const {user,logOut,updateUrl} = useContext(AuthContext)
+  const { user, logOut, updateUrl } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const handleLogOut=()=>{
-      logOut()
-      .then(()=>{
-        localStorage.removeItem('doctors');
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        localStorage.removeItem("doctors");
       })
-      .catch(error=>{
+      .catch((error) => {
         console.log(error);
-      })
-    }
+      });
+  };
 
   return (
     <div className="bg-orange-50 px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -73,29 +73,35 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
-        {
-          user? 
-         <>   <Link to={'/appoint'}><p className="font-bold text-green-500">
-          <small >My Toys</small></p></Link>
-          <button onClick={handleLogOut} className="p-2 rounded btn btn-sm"> SignOut </button> 
-          <div className="relative inline-block group">
-      <img
-        src='https://lh3.googleusercontent.com/a/AGNmyxYoZpZr3z629at42vhbr5aWTk9mhTWhyajofPABXQ=s96-c'
-        alt="User Picture"
-        className="w-12 h-12 rounded-full"
-      />
-      <div className="opacity-0 bg-white p-2 rounded-md shadow-md absolute bottom-0 left-0 group-hover:opacity-100">
-        <span className="text-gray-800">Mr..</span>
-      </div>
-    </div>
-        
-  
-  
-         
-         </> :
-         <Link to={'/login'}> <button className="p-2 rounded btn btn-sm"> SignIn </button></Link>
-        }
-      
+        {user ? (
+          <>
+            {" "}
+            <Link to={"/appoint"}>
+              <p className="font-bold text-green-500">
+                <small>My Toys</small>
+              </p>
+            </Link>
+            <button onClick={handleLogOut} className="p-2 rounded btn btn-sm">
+              {" "}
+              SignOut{" "}
+            </button>
+            <div className="relative inline-block group">
+              <img
+                src="https://lh3.googleusercontent.com/a/AGNmyxYoZpZr3z629at42vhbr5aWTk9mhTWhyajofPABXQ=s96-c"
+                alt="User Picture"
+                className="w-12 h-12 rounded-full"
+              />
+              <div className="opacity-0 bg-white p-2 rounded-md shadow-md absolute bottom-0 left-0 group-hover:opacity-100">
+                <span className="text-gray-800">Mr..</span>
+              </div>
+            </div>
+          </>
+        ) : (
+          <Link to={"/login"}>
+            {" "}
+            <button className="p-2 rounded btn btn-sm"> SignIn </button>
+          </Link>
+        )}
 
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">
@@ -159,7 +165,7 @@ const Navbar = () => {
                         to="/blog"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
                       >
-                       add a toy
+                        add a toy
                       </Link>
                     </li>
                     <li>
@@ -167,7 +173,7 @@ const Navbar = () => {
                         to="/blog"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
                       >
-                       Blogs
+                        Blogs
                       </Link>
                     </li>
                   </ul>

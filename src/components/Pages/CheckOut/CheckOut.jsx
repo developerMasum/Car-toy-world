@@ -6,7 +6,14 @@ import Swal from "sweetalert2";
 const CheckOut = () => {
   const loadedData = useLoaderData();
   const {user} = useContext(AuthContext);
+  const navigate = useNavigate()
 //   console.log(loadedData);
+
+// const returnToMyToys=()=>{
+
+//   navigate('/mytoy')
+
+// }
 
   const handleByCustomer = (event) => {
     event.preventDefault();
@@ -49,6 +56,7 @@ const CheckOut = () => {
             showConfirmButton: false,
             timer: 2000
           })
+          navigate('/mytoy')
           
         }
       })
@@ -139,7 +147,7 @@ const CheckOut = () => {
             />
           </div>
         </div>
-        <button className="btn mt-8  w-full"> Order Now </button>
+        <button  className="btn mt-8  w-full"> Order Now </button>
       </form>
     </div>
   );
