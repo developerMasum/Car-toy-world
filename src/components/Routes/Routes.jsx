@@ -10,11 +10,15 @@ import CheckOut from "../Pages/CheckOut/CheckOut";
 import Order from "../Pages/Order/Order";
 import UpdateOrder from "../Pages/Order/UpdateOrder";
 import AllToy from "../Pages/AllToy/AllToy";
+import Blog from "../Pages/Blog/Blog";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Main />
+    element:<Main />,
+    errorElement:<ErrorPage />
+  
   ,
   children:[
     {
@@ -33,8 +37,11 @@ const router = createBrowserRouter([
     {
       path:'/register',
       element: <Register />
-    },
-    {
+    },{
+      path:'/blog',
+      element:<Blog />
+    }
+    ,{
       path:'/toys/:id',
       element: <PrivateRoute> <ToyDetails/> </PrivateRoute>,
       loader:({params})=>fetch(`http://localhost:5000/toys/${params.id}`)

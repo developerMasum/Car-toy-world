@@ -25,7 +25,16 @@ const AuthProvider = ({children}) => {
     const logOut = ()=>{
         setLoading(true);
         return signOut(auth)
-    }
+    };
+
+    const updateUrl = ()=>{
+
+        return updateProfile (auth.currentUser, {
+          displayName: "Mr.. User", photoURL: "https://lh3.googleusercontent.com/a/AGNmyxYoZpZr3z629at42vhbr5aWTk9mhTWhyajofPABXQ=s96-c"})
+    
+    
+    
+      };
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,currentUser=>{
@@ -46,6 +55,7 @@ const AuthInfo = {
     createUser,
     logIn,
     logOut,
+    updateUrl,
 
 
 
