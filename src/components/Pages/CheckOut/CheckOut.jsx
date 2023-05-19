@@ -17,14 +17,17 @@ const CheckOut = () => {
     const date = form.date.value;
     const email = user?.email;
     const price = form.price.value;
+    const quantity = form.quantity.value
     const order = {
       customerName: name,
       date,
       email,
+      details: description,
       price,
       picture_url,
       toyName: toyName,
-      rating
+     quantity ,
+
     };
     console.log(order);
 
@@ -118,7 +121,19 @@ const CheckOut = () => {
             <input
               type="text"
               name="price"
-              defaultValue={"$" + price + "" + "USD"}
+              defaultValue={price + "" + "USD"}
+              readOnly
+              className="input input-bordered"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Quantity: </span>
+            </label>
+            <input
+              type="text"
+              name="quantity"
+              defaultValue={available_quantity}
               readOnly
               className="input input-bordered"
             />

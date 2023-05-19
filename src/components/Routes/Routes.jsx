@@ -7,6 +7,9 @@ import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import ToyDetails from "../Pages/Home/ToyDetails";
 import CheckOut from "../Pages/CheckOut/CheckOut";
+import Order from "../Pages/Order/Order";
+import UpdateOrder from "../Pages/Order/UpdateOrder";
+import AllToy from "../Pages/AllToy/AllToy";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,22 @@ const router = createBrowserRouter([
       path:'/checkout/:id',
       element: <CheckOut />,
       loader:({params})=>fetch(`http://localhost:5000/toys/${params.id}`)
+    },
+    {
+      path:'/mytoy',
+      element:<Order />
+    }
+    ,
+    {
+      path:'/order/:id',
+      element:<UpdateOrder />,
+      loader:({params})=>fetch(`http://localhost:5000/order/${params.id}`)
+    },
+    {
+      path:'/toys',
+      element:<AllToy />,
+      loader: ()=> fetch('http://localhost:5000/order')
+    
     }
   ]
   },

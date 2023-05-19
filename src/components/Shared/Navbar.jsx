@@ -42,7 +42,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/toy"
+              to="/toys"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
               All Toys
@@ -50,7 +50,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/applied"
+              to="/mytoy"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
               My Toys
