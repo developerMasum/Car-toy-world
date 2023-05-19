@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ToyDetails = () => {
   const toyDetails = useLoaderData();
@@ -35,7 +35,7 @@ const ToyDetails = () => {
             <p>{price}</p>
             <p>{description}</p>
     <div className="card-actions justify-start">
-      <button className="btn btn-primary">Buy Now</button>
+   <Link to={`/checkout/${_id}`}> <button className="btn btn-primary">Buy Now</button></Link>
     </div>
   </div>
 </div>

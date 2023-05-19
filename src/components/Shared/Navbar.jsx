@@ -42,7 +42,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/toys"
+              to="/toy"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
               All Toys

@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import ToyCard from '../AllToy/ToyCard';
 
 const CategoriesTab = () => {
-  const [jobs, setJob] = useState([]);
-  const [activeTab, setActiveTab] = useState(" ");
+  const [toys, setToys] = useState([]);
+  const [activeTab, setActiveTab] = useState("racing");
 
   useEffect(() => {
     fetch(`http://localhost:5000/allToysByCategory/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
-        setJob(result);
+        setToys(result);
       });
   }, [activeTab]);
-//   const result =  jobs.filter(job=> job.sub_category == activeTab);
-//  setJob(result);
+//   const result =  toys.filter(job=> job.sub_category == activeTab);
+//  setToys(result);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName); }
@@ -54,7 +54,7 @@ const CategoriesTab = () => {
       </div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 mt-3 my-container ">
-      {jobs?.map((toy) => (
+      {toys?.map((toy) => (
         <ToyCard
         key={toy._id}
         toy={toy}></ToyCard>

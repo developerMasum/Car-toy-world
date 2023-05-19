@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import img from '../../../assets/Signup1.png'
 // import img from "../../assets/images/login/login.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ const Login = () => {
   const { logIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [error, setError] = useState();
 
   const from = location.state?.from?.pathname || '/';
   // const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Login = () => {
         navigate(from, { replace: true })
     })
     .catch(error=>{
-        console.log(error.message);
+       setError(error.message);
     })
 
 
@@ -60,8 +61,13 @@ const Login = () => {
                     <div className="form-control mt-6">
                         <input className="btn btn-primary" type="submit" value="Login" />
                     </div>
+
+                    <p className="text-red-600">
+              <small> {error}</small>
+            </p>
+                    
                 </form>
-                <p className='my-4 text-center'>New to Toy-market <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
+                <p className='my-4 text-center'>New to toy-market? <Link className='text-orange-600 font-bold' to="/register">Sign Up</Link> </p>
                 {/* <SocialLogin></SocialLogin> */}
             </div>
         </div>
