@@ -4,7 +4,7 @@ const Gallery = () => {
   return (
     <div className="">
         <h2 className="text-center text-3xl text-red-300 font-serif font-bold">Photo Gallery</h2>
-        <div className="grid grid-cols-3 gap-5 px-20  bg-blue-gray-600 my-container">
+        <div className="grid grid-cols-3 gap-5 px-20  bg-base-200 my-container">
     
     <img
       src="https://media.istockphoto.com/id/1356433415/photo/preschool-age-boy-plays-with-toy-trains-on-floor.jpg?b=1&s=170667a&w=0&k=20&c=DOFeG1Avy_wDxN3sxhxaWg_mgdmvHGeILuLeE7FY-gU="
