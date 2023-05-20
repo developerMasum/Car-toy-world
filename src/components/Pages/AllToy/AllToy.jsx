@@ -44,52 +44,61 @@
 
 // export default AllToy;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import Test from './Test';
+// import All_Toys_Cart from './All_Toys_Cart';
 
-const AllToy = () => {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
-  const handleSearch = async () => {
-    try {
-      const response = await fetch(
-        `https://server-for-toy.vercel.app/api/products?q=${query}`
-      );
-      const data = await response.json();
-      setResults(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  return (
-    <div>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search products"
-      />
-      <button onClick={handleSearch}>Search</button>
+const All_Toys = () => {
+    const [allToys, setAllToys] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    // const [loading, setLoading] = useState(true);
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Photo URL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {results.map((product) => (
-            <tr key={product._id}>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
-              <td>{product.photoUrl}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+    useEffect(() => {
+        fetch('https://server-for-toy.vercel.app/toys')
+            .then(response => response.json())
+            .then(data => {
+                setAllToys(data);
+            });
+    }, []);
+
+    const handleSearch = () => {
+        fetch(`https://server-for-toy.vercel.app/allToySearch/${searchText}`)
+            .then(response => response.json())
+            .then(data => {
+                setAllToys(data);
+               
+                console.log(data);
+            });
+    };
+
+    return (
+        <div>
+
+
+            <div className="flex justify-center gap-6">
+                <input
+                    type="text"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    placeholder="Search"
+                    className="input input-bordered" />
+
+                <button className="btn btn-outline btn-secondary" onClick={handleSearch}>Search</button>
+
+            </div>
+
+
+            <div className='w-11/12 md:10/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+      lg:grid-cols-3 gap-5 mt-10 py-3 px-3'>
+                {
+                  allToys.map(toy=><Test
+                    key={toy._id}
+                    toy={toy}
+                    />)
+                }
+            </div>
+        </div>
+    );
 };
 
-export default AllToy;
+export default All_Toys;
