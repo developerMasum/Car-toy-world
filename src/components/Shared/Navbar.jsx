@@ -4,7 +4,6 @@ import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 import { AuthContext } from "../Providers/AuthProvider";
 
-
 const Navbar = () => {
   const { user, logOut, updateUrl } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,20 +18,18 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+    <div className=" px-4 text-lg py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
-        {/* Logo Section */}
         <Link to="/" className="inline-flex items-center text-3xl">
-          {/* <span className="ml-2   font-bold tracking-wide text-gray-800">CC
-          <span className="text-blue-300">Hospital</span>
-          </span> */}
           <span>
-            {/* <AiFillCar className="text-blue-500" /> */}
-            <img src="https://i.ibb.co/3hGttQ9/d9gq-oo09-151115-1.jpg" className="w-20" alt="" />
+            <img
+              src="https://i.ibb.co/3hGttQ9/d9gq-oo09-151115-1.jpg"
+              className="w-20"
+              alt=""
+            />
           </span>
         </Link>
 
-        {/* Nav Items Section */}
         <ul className="items-center hidden space-x-8 lg:flex">
           <li>
             <NavLink
@@ -52,37 +49,36 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/mytoy"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              My Toys
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/addToy"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Add a toy
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/blog"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
               Blogs
             </NavLink>
           </li>
+          <li>
+            {user && (
+              <NavLink
+                to="/mytoy"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                My Toys
+              </NavLink>
+            )}
+          </li>
+          <li>
+            {user && (
+              <NavLink
+                to="/addToy"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Add a toy
+              </NavLink>
+            )}
+          </li>
         </ul>
         {user ? (
           <>
             {" "}
-            <Link to={"/appoint"}>
-              <p className="font-bold text-green-500">
-                <small>My Toys</small>
-              </p>
-            </Link>
             <button onClick={handleLogOut} className="p-2 rounded btn btn-sm">
               {" "}
               SignOut{" "}
@@ -105,9 +101,7 @@ const Navbar = () => {
           </Link>
         )}
 
-        {/* Mobile Navbar Section */}
         <div className="lg:hidden">
-          {/* Dropdown Open Button */}
           <button
             aria-label="Open Menu"
             title="Open Menu"
@@ -123,11 +117,15 @@ const Navbar = () => {
                   <div>
                     <Link to="/" className="inline-flex items-center">
                       <span>
-                        <AiFillCar className="text-blue-500" />
+                        <img
+                          src="https://i.ibb.co/3hGttQ9/d9gq-oo09-151115-1.jpg"
+                          className="w-20"
+                          alt=""
+                        />
                       </span>
                     </Link>
                   </div>
-                  {/* Dropdown menu close button */}
+
                   <div>
                     <button
                       aria-label="Close Menu"
@@ -138,7 +136,7 @@ const Navbar = () => {
                     </button>
                   </div>
                 </div>
-                {/* Mobile Nav Items Section */}
+
                 <nav>
                   <ul className="space-y-4">
                     <li>
@@ -148,7 +146,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/chart"
+                        to="/toys"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
                       >
                         All toys
@@ -156,7 +154,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/applied"
+                        to="/mytoy"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
                       >
                         My Toys
@@ -164,7 +162,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/blog"
+                        to="/addToy"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
                       >
                         add a toy
