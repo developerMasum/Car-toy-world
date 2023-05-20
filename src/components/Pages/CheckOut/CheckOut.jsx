@@ -7,13 +7,7 @@ const CheckOut = () => {
   const loadedData = useLoaderData();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  //   console.log(loadedData);
 
-  // const returnToMyToys=()=>{
-
-  //   navigate('/mytoy')
-
-  // }
 
   const handleByCustomer = (event) => {
     event.preventDefault();
@@ -73,6 +67,7 @@ const CheckOut = () => {
   } = loadedData;
   return (
     <div className="my-container">
+      <h2 className="text-3xl underline font-bold text-center mt-2 mb-8">Order Details</h2>
       <form onSubmit={handleByCustomer}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="form-control">
