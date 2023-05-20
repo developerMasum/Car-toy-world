@@ -6,8 +6,9 @@ const Gallery = () => {
    data-aos-offset="300"
    data-aos-easing="ease-in-sine" >
      <div >
-      <div>  <h2 className="text-center text-3xl text-red-300 font-serif font-bold">Photo Gallery</h2></div>
-        <div className="grid grid-cols-3 gap-5 px-20  bg-base-200 my-container">
+      <div>  <h2 className="text-center text-3xl text-red-200  font-serif font-bold">Photo Gallery <br />
+      <span className=" text-green-200 text-2xl">(sent by Happy Customers)</span></h2></div>
+        <div className="grid grid-cols-3 gap-5 px-20  bg-base-100 my-container">
     
     <div >
     <img
