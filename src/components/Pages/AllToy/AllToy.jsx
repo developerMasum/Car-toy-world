@@ -44,61 +44,74 @@
 
 // export default AllToy;
 
-import React, { useEffect, useState } from 'react';
-import Test from './Test';
+import React, { useEffect, useState } from "react";
+import Test from "./Test";
 // import All_Toys_Cart from './All_Toys_Cart';
 
 const All_Toys = () => {
-    const [allToys, setAllToys] = useState([]);
-    const [searchText, setSearchText] = useState('');
-    // const [loading, setLoading] = useState(true);
+  const [allToys, setAllToys] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  // const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetch('https://server-for-toy.vercel.app/toys')
-            .then(response => response.json())
-            .then(data => {
-                setAllToys(data);
-            });
-    }, []);
+  useEffect(() => {
+    fetch("https://server-for-toy.vercel.app/toys")
+      .then((response) => response.json())
+      .then((data) => {
+        setAllToys(data);
+      });
+  }, []);
 
-    const handleSearch = () => {
-        fetch(`https://server-for-toy.vercel.app/allToySearch/${searchText}`)
-            .then(response => response.json())
-            .then(data => {
-                setAllToys(data);
-               
-                console.log(data);
-            });
-    };
+  const handleSearch = () => {
+    fetch(`https://server-for-toy.vercel.app/allToySearch/${searchText}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAllToys(data);
 
-    return (
-        <div>
+        console.log(data);
+      });
+  };
 
+  return (
+    <div>
+      <div className="flex justify-center gap-6">
+        <input
+          type="text"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          placeholder="Search"
+          className="input input-bordered"
+        />
 
-            <div className="flex justify-center gap-6">
-                <input
-                    type="text"
-                    value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
-                    placeholder="Search"
-                    className="input input-bordered" />
+        <button
+          className="btn btn-outline btn-secondary"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+      </div>
 
-                <button className="btn btn-outline btn-secondary" onClick={handleSearch}>Search</button>
-
-            </div>
-
-
-            <div className='w-11/12 md:10/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-      lg:grid-cols-3 gap-5 mt-10 py-3 px-3'>
-                {
-                  allToys.map(toy=><Test
-                    key={toy._id}
-                    toy={toy}
-                    />)
-                }
-            </div>
-        </div>
-    );
+      <div className="overflow-x-auto w-full my-container">
+      <table className="table w-full">
+        {/* head */}
+        <thead>
+          <tr>
+            <th>Product info</th>
+            <th> Orderer Info </th>
+            <th> Available Quantity</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {allToys.map((toy) => (
+          <Test key={toy._id} toy={toy} />
+        ))}
+        </tbody>
+      </table>
+    </div>
+    </div>
+  );
 };
 
 export default All_Toys;
