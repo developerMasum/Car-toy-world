@@ -4,10 +4,10 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const AddToy = () => {
-  const {user}=  useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleAddToy = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const price = form.price.value;
@@ -18,41 +18,49 @@ const AddToy = () => {
     const seller_email = form.seller_email.value;
     const seller_name = form.seller_name.value;
     const sub_category = form.sub_category.value;
-    const addNew =  {
-      name,price,description,picture_url,rating,available_quantity,seller_email,seller_name,sub_category
-    }
+    const addNew = {
+      name,
+      price,
+      description,
+      picture_url,
+      rating,
+      available_quantity,
+      seller_email,
+      seller_name,
+      sub_category,
+    };
     console.log(addNew);
 
-    fetch('http://localhost:5000/toys',{
-      method:'POST',
-      headers:{
-        'content-type':'application/json'
+    fetch("https://server-for-toy.vercel.app/toys", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(addNew)
-    }).then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-      if (data.insertedId) {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Your Toys has been added successfully',
-          showConfirmButton: false,
-          timer: 2000
-        })
-        navigate('/toys')
-        
-      }
+      body: JSON.stringify(addNew),
     })
-
-
-
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your Toys has been added successfully",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          navigate("/toys");
+        }
+      });
 
     // _id,description,picture_url,available_quantity,rating,price,seller_name,name,seller_email
   };
   return (
-    <div className="bg-pink-50 p-24">
-      <h2 className="text-3xl text-center font-bold  "> add a coffee </h2>
+    <div className="bg-base-200 px-24 py-10">
+      <h2 className="text-3xl text-center font-bold font-serif mb-5   ">
+        {" "}
+        ADD TOY{" "}
+      </h2>
       <form onSubmit={handleAddToy}>
         {/* row  coffee name */}
         <div className="md:flex gap-4">
@@ -69,8 +77,6 @@ const AddToy = () => {
             </label>
           </div>
 
-
-          
           {/* row  coffee qunatity */}
           <div className="form-control md:w-1/2">
             <label className="label">
@@ -133,7 +139,6 @@ const AddToy = () => {
             <label className="input-group">
               <input
                 name="sub_category"
-          
                 className="input input-bordered w-full"
               />
             </label>
@@ -165,20 +170,18 @@ const AddToy = () => {
               />
             </label>
           </div>
-
-
         </div>
         <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Details</span>
-            </label>
-            <label className="input-group">
-              <input
-                name="details"
-                className="input input-bordered h-20 w-full"
-              />
-            </label>
-          </div>
+          <label className="label">
+            <span className="label-text">Details</span>
+          </label>
+          <label className="input-group">
+            <input
+              name="details"
+              className="input input-bordered h-20 w-full"
+            />
+          </label>
+        </div>
         <button className="btn btn-block mt-5">add new </button>
       </form>
     </div>

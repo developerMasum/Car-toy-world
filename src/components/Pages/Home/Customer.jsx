@@ -2,7 +2,7 @@ import takeorderpic from "../../../assets/showroom (1).png";
 
 const Customer = () => {
   return (
-    <div className="hero min-h-screen bg-base-200 my-container mb-5 ">
+    <div data-aos="fade-down-right" className="hero min-h-screen bg-base-200 my-container mb-5 ">
       <div className="hero-content flex-col lg:flex-row-reverse ">
         <img src={takeorderpic} className="max-w-sm rounded-lg shadow-4xl" />
         <div className="w-2/3 me-14">

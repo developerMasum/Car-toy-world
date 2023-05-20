@@ -19,69 +19,78 @@ import AddToy from "../Pages/AddToy/AddToy";
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Main />,
-    errorElement:<ErrorPage />
-  
-  ,
-  children:[
-    {
-      path:'/',
-      element:<Home />
-    },
-    // {
-    //   path:'/toys',
-    //   element:<AllToy />
-    // },
-    
-    {
-      path:'/login',
-      element:<Login />
-    },
-    {
-      path:'/register',
-      element: <Register />
-    },{
-      path:'/blog',
-      element:<Blog />
-    }
-    ,{
-      path:'/toys/:id',
-      element: <PrivateRoute> <ToyDetails/> </PrivateRoute>,
-      loader:({params})=>fetch(`http://localhost:5000/toys/${params.id}`)
-     
-    },{
-      path:'/checkout/:id',
-      element: <CheckOut />,
-      loader:({params})=>fetch(`http://localhost:5000/toys/${params.id}`)
-    },
-    {
-      path:'/mytoy',
-      element:<Order />
-    }
-    ,
-    {
-      path:'/order/:id',
-      element:<UpdateOrder />,
-      loader:({params})=>fetch(`http://localhost:5000/order/${params.id}`)
-    },
-    {
-      path:'/toys',
-      element:<AllToy />,
-      loader: ()=> fetch('http://localhost:5000/toys')
-    
-    },
-    {
-      path:'/details/:id',
-      element: <PrivateRoute><DetailsAllToys /></PrivateRoute>,
-      loader:({params})=>fetch(`http://localhost:5000/toys/${params.id}`)
+    element: <Main />,
+    errorElement: <ErrorPage />,
 
-    },
-    {
-      path:'/addToy',
-      element: <AddToy />,
-      
-    }
-  ]
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      // {
+      //   path:'/toys',
+      //   element:<AllToy />
+      // },
+
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/toys/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ToyDetails />{" "}
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://server-for-toy.vercel.app/toys/${params.id}`),
+      },
+      {
+        path: "/checkout/:id",
+        element: <CheckOut />,
+        loader: ({ params }) =>
+          fetch(`https://server-for-toy.vercel.app/toys/${params.id}`),
+      },
+      {
+        path: "/mytoy",
+        element: <Order />,
+      },
+      {
+        path: "/order/:id",
+        element: <UpdateOrder />,
+        loader: ({ params }) =>
+          fetch(`https://server-for-toy.vercel.app/order/${params.id}`),
+      },
+      {
+        path: "/toys",
+        element: <AllToy />,
+        loader: () => fetch("https://server-for-toy.vercel.app/toys"),
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <DetailsAllToys />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://server-for-toy.vercel.app/toys/${params.id}`),
+      },
+      {
+        path: "/addToy",
+        element: <AddToy />,
+      },
+    ],
   },
 ]);
 export default router;

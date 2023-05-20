@@ -12,10 +12,10 @@ const Service = () => {
       onEnter={() => setCountOn(true)}
       onExit={() => setCountOn(false)}
     >
-      <div className="mb-8">
+      <div    className="mb-8">
         <h2 className="text-red-400 text-center text-3xl mb-8 font-extrabold">Services</h2>
         <div className="flex gap-6 justify-center items-center">
-          <div className="bg-red-100 px-10 py-3 rounded-md" >
+          <div  className="bg-red-100 px-10 py-3 rounded-md" >
             <div className=" text-center"  >
               <FaCarCrash className="text-5xl " />
             </div>

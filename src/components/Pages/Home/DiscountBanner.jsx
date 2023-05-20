@@ -3,7 +3,9 @@ import pic from '../../../assets/slidepic.jpg'
 
 const DiscountBanner = () => {
   return (
-    <div className="mt-10 ">  <h2 className="text-3xl text-center "><span className="text-red-300  font-sans font-extrabold">Discount</span> Going on:</h2>
+    <div  data-aos="fade-right"
+    data-aos-offset="300"
+    data-aos-easing="ease-in-sine"  className="mt-10 ">  <h2 className="text-3xl text-center "><span className="text-red-300  font-sans font-extrabold">Discount</span> Going on:</h2>
         <div className="flex my-container items-center bg-base-100  align-middle justify-center">
        
        <div className="">
@@ -34,7 +36,7 @@ const DiscountBanner = () => {
     </div>
   </div>
   <div>
-      <div className="mt-5">
+      <div  className="mt-5">
       
           <h2 className="text-5xl font-extrabold font-serif mt-5  text-blue-gray-900">Hot deal this week</h2>
           <h5 className="text-2xl mt-3 font-bold  font-sans">New Collection Up to 50% OFF!!</h5>
@@ -46,7 +48,7 @@ const DiscountBanner = () => {
   </div>
   
        </div>
-       <div>
+       <div >
           <img src={pic} alt="" />
        </div>
       </div>

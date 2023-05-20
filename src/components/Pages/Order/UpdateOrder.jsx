@@ -24,31 +24,26 @@ const UpdateOrder = () => {
     };
     console.log(newOrder);
 
-
-// send data to mongoDb
-fetch(`http://localhost:5000/order/${_id}`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(newOrder),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      if (data.modifiedCount > 0 ) {
-        Swal.fire({
-          title: "Success!",
-          text: "Coffee added Successfully ",
-          icon: "success",
-          confirmButtonText: "okay",
-        });
-      }
-    });
-
-
-
-
+    // send data to mongoDb
+    fetch(`https://server-for-toy.vercel.app/order/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Coffee added Successfully ",
+            icon: "success",
+            confirmButtonText: "okay",
+          });
+        }
+      });
   };
 
   const {
@@ -63,6 +58,7 @@ fetch(`http://localhost:5000/order/${_id}`, {
 
   return (
     <div className="my-container">
+      <div  className="text-center text-3xl font-serif font-bold mb-8"> <span className="text-red-300">Update</span> Your Order</div>
       <form onSubmit={handleByCustomer}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="form-control">

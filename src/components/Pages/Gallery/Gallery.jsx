@@ -2,14 +2,19 @@ import React from "react";
 
 const Gallery = () => {
   return (
-    <div className="">
-        <h2 className="text-center text-3xl text-red-300 font-serif font-bold">Photo Gallery</h2>
+   <section data-aos="fade-left"
+   data-aos-offset="300"
+   data-aos-easing="ease-in-sine" >
+     <div >
+      <div>  <h2 className="text-center text-3xl text-red-300 font-serif font-bold">Photo Gallery</h2></div>
         <div className="grid grid-cols-3 gap-5 px-20  bg-base-200 my-container">
     
+    <div >
     <img
       src="https://media.istockphoto.com/id/1356433415/photo/preschool-age-boy-plays-with-toy-trains-on-floor.jpg?b=1&s=170667a&w=0&k=20&c=DOFeG1Avy_wDxN3sxhxaWg_mgdmvHGeILuLeE7FY-gU="
       alt=""
     />
+    </div>
     <img
       src="https://media.istockphoto.com/id/525833871/photo/red-plastic-toy-car.jpg?b=1&s=170667a&w=0&k=20&c=Fb7jr7cCs6yD2py4Bg-eAYCkma3f_SH0psV3ZKLnUhE="
       alt=""
@@ -33,6 +38,7 @@ const Gallery = () => {
  
   </div>
     </div>
+   </section>
   );
 };
 

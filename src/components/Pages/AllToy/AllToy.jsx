@@ -8,7 +8,7 @@
 //   console.log(allToys);
 
 //   const handleSearch = () => {
-//     fetch(`http://localhost:5000/allToySearch${searchText}`)
+//     fetch(`https://server-for-toy.vercel.app/allToySearch${searchText}`)
 //       .then((response) => response.json())
 //       .then((data) => setSearchText(data))
 //       .catch((error) =>{
@@ -44,17 +44,16 @@
 
 // export default AllToy;
 
-
-
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AllToy = () => {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState([])
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products?q=${query}`);
+      const response = await fetch(
+        `https://server-for-toy.vercel.app/api/products?q=${query}`
+      );
       const data = await response.json();
       setResults(data);
     } catch (error) {

@@ -6,13 +6,15 @@ import { Link } from 'react-router-dom';
 const ToyCard = ({toy}) => {
   const {_id,description,picture_url,available_quantity,rating,price,seller_name,name,seller_email}= toy || {};
     return (
-       <div >
+       <div data-aos="fade-right"
+       data-aos-offset="300"
+       data-aos-easing="ease-in-sine" >
          <div className="card card-compact  w-80 bg-base-100 shadow-xl h-full ">
         <img src={picture_url} alt="toy" />
-        <div className="card-body">
-          <h2 className="font-bold text-center">{rating}</h2>
+        <div  className="card-body">
+          {/* <h2 className="font-bold text-center">{rating}</h2> */}
 
-          <div className=" text-center position-absolute bottom-0 end-50 mb-3">
+          <div  className=" text-center position-absolute bottom-0 end-50 mb-3">
                   <Rating
                     readonly
                     className="text-success"

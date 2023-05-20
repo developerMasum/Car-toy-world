@@ -5,15 +5,15 @@ import Swal from "sweetalert2";
 
 const CheckOut = () => {
   const loadedData = useLoaderData();
-  const {user} = useContext(AuthContext);
-  const navigate = useNavigate()
-//   console.log(loadedData);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  //   console.log(loadedData);
 
-// const returnToMyToys=()=>{
+  // const returnToMyToys=()=>{
 
-//   navigate('/mytoy')
+  //   navigate('/mytoy')
 
-// }
+  // }
 
   const handleByCustomer = (event) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ const CheckOut = () => {
     const date = form.date.value;
     const email = user?.email;
     const price = form.price.value;
-    const quantity = form.quantity.value
+    const quantity = form.quantity.value;
     const order = {
       customerName: name,
       date,
@@ -33,42 +33,35 @@ const CheckOut = () => {
       price,
       picture_url,
       toyName: toyName,
-     quantity ,
-
+      quantity,
     };
     console.log(order);
 
-    fetch('http://localhost:5000/order' ,{
-        method:'POST',
-        headers:{
-          'content-type': 'application/json'
-        },
-        body:JSON.stringify(order)
-      })
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data)
+    fetch("https://server-for-toy.vercel.app/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Your order been sent successfully',
+            position: "center",
+            icon: "success",
+            title: "Your order been sent successfully",
             showConfirmButton: false,
-            timer: 2000
-          })
-          navigate('/mytoy')
-          
+            timer: 2000,
+          });
+          navigate("/mytoy");
         }
-      })
-
-
-
-
+      });
   };
 
-
-
-  const { _id,
+  const {
+    _id,
     description,
     picture_url,
     available_quantity,
@@ -76,7 +69,8 @@ const CheckOut = () => {
     price,
     seller_name,
     name,
-    seller_email,} = loadedData;
+    seller_email,
+  } = loadedData;
   return (
     <div className="my-container">
       <form onSubmit={handleByCustomer}>
@@ -121,7 +115,7 @@ const CheckOut = () => {
               className="input input-bordered"
             />
           </div>
-          
+
           <div className="form-control">
             <label className="label">
               <span className="label-text">Price: </span>
@@ -147,7 +141,7 @@ const CheckOut = () => {
             />
           </div>
         </div>
-        <button  className="btn mt-8  w-full"> Order Now </button>
+        <button className="btn mt-8  w-full"> Order Now </button>
       </form>
     </div>
   );
