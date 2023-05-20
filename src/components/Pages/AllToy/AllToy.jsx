@@ -72,8 +72,8 @@ const All_Toys = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-center gap-6">
+    <div className="mt-5">
+      <div className="flex justify-center gap-6 mb-0">
         <input
           type="text"
           value={searchText}
@@ -95,12 +95,14 @@ const All_Toys = () => {
         {/* head */}
         <thead>
           <tr>
-            <th>Product info</th>
-            <th> Orderer Info </th>
-            <th> Available Quantity</th>
+            <th>Picture & Toy Name</th>
+            <th> Seller Name </th>
+            {/* <th> Toy Name</th> */}
+            <th>Category</th>
             <th>Price</th>
-            <th>Date</th>
+            <th>Quantity</th>
             <th>Action</th>
+            {/* <th><button className="btn btn-outline btn-sm btn-success">Success</button></th> */}
           </tr>
         </thead>
         <tbody>

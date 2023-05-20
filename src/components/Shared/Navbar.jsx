@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { AiFillCar } from "react-icons/ai";
+
 import { AuthContext } from "../Providers/AuthProvider";
+
 
 const Navbar = () => {
   const { user, logOut, updateUrl } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-base-200 px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+    <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center text-3xl">
@@ -26,7 +27,8 @@ const Navbar = () => {
           <span className="text-blue-300">Hospital</span>
           </span> */}
           <span>
-            <AiFillCar className="text-blue-500" />
+            {/* <AiFillCar className="text-blue-500" /> */}
+            <img src="https://i.ibb.co/3hGttQ9/d9gq-oo09-151115-1.jpg" className="w-20" alt="" />
           </span>
         </Link>
 
