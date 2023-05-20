@@ -12,8 +12,7 @@ const CategoriesTab = () => {
         setToys(result);
       });
   }, [activeTab]);
-//   const result =  toys.filter(job=> job.sub_category == activeTab);
-//  setToys(result);
+
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName); }
@@ -21,8 +20,8 @@ const CategoriesTab = () => {
 
   
   return (
-    <div>
-    <h1 className="text-3xl font-extrabold text-center mb-5">Pick By <span className=' text-red-300'>Sub-Category</span></h1>
+    <div className='mt-20'>
+    <h1 className="text-3xl font-extrabold text-center mb-12 mt-5">Pick By <span className=' text-red-300'>Sub-Category</span></h1>
     <div className=" text-center flex align-middle justify-center">
       <div className="text-center w-100 mx-auto">
         <div className="tabs ">

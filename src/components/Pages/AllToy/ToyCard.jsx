@@ -9,10 +9,10 @@ const ToyCard = ({toy}) => {
        <div data-aos="fade-right"
        data-aos-offset="300"
        data-aos-easing="ease-in-sine" >
-         <div className="card card-compact  w-80 bg-base-100 shadow-xl h-full ">
-        <img src={picture_url} alt="toy" />
+         <div className="card card-compact hover:bg-green-100 rounded-md  w-80 bg-base-100 shadow-lg h-full ">
+        <img src={picture_url} className='rounded-md' alt="toy" />
         <div  className="card-body">
-          {/* <h2 className="font-bold text-center">{rating}</h2> */}
+       
 
           <div  className=" text-center position-absolute bottom-0 end-50 mb-3">
                   <Rating
