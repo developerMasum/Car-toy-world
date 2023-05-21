@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useTitle from "../../Hooks/titleHooks";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle('Add Toy')
   const handleAddToy = (event) => {
     event.preventDefault();
     const form = event.target;

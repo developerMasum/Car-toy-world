@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import OrderCard from "./OrderCard";
 import Swal from "sweetalert2";
+import useTitle from "../../Hooks/titleHooks";
 
 const Order = () => {
   const [orders, setOrders] = useState();
   const { user } = useContext(AuthContext);
+  useTitle('My Toys')
 
   const url = `https://server-for-toy.vercel.app/order?email=${user?.email}`;
 

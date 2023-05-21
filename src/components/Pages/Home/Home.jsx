@@ -5,8 +5,10 @@ import Customer from './Customer';
 import CategoriesTab from './CategoriesTab';
 import Gallery from '../Gallery/Gallery';
 import DiscountBanner from './DiscountBanner';
+import useTitle from '../../Hooks/titleHooks';
 
 const Home = () => {
+    useTitle('Home')
     return (
         <div>
             <Banner />

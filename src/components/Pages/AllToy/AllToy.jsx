@@ -46,11 +46,13 @@
 
 import React, { useEffect, useState } from "react";
 import Test from "./Test";
+import useTitle from "../../Hooks/titleHooks";
 // import All_Toys_Cart from './All_Toys_Cart';
 
 const All_Toys = () => {
   const [allToys, setAllToys] = useState([]);
   const [searchText, setSearchText] = useState("");
+  useTitle('AllToys')
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -91,27 +93,31 @@ const All_Toys = () => {
       </div>
 
       <div className="overflow-x-auto w-full my-container">
-      <table className="table w-full">
-        {/* head */}
-        <thead>
-          <tr>
-            <th>Picture & Toy Name</th>
-            <th> Seller Name </th>
-            {/* <th> Toy Name</th> */}
-            <th>Category</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Action</th>
-            {/* <th><button className="btn btn-outline btn-sm btn-success">Success</button></th> */}
-          </tr>
-        </thead>
-        <tbody>
-        {allToys.map((toy) => (
-          <Test key={toy._id} toy={toy} />
-        ))}
-        </tbody>
-      </table>
-    </div>
+        <div className="justify-end flex flex-row mb-4 gap-3">
+          <button className="btn btn-outline btn-sm btn-success">ascending</button>
+          <button className="btn btn-outline btn-sm btn-secondary">descending</button>
+        </div>
+        <table className="table w-full">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>Picture & Toy Name</th>
+              <th> Seller Name </th>
+              {/* <th> Toy Name</th> */}
+              <th>Category</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Action</th>
+              {/* <th><button className="btn btn-outline btn-sm btn-success">Success</button></th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {allToys.map((toy) => (
+              <Test key={toy._id} toy={toy} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

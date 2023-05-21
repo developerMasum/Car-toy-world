@@ -3,6 +3,7 @@ import img from '../../../assets/Signup1.png'
 // import img from "../../assets/images/login/login.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useTitle from "../../Hooks/titleHooks";
 // import { AuthContext } from "../Auth/AuthProvider";
 // import { AuthContext } from "../../components/Providers/AuthProvider";
 
@@ -11,6 +12,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState();
+useTitle('Login')
 
   const from = location.state?.from?.pathname || '/';
   // const navigate = useNavigate();
