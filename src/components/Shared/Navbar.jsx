@@ -6,6 +6,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut, updateUrl } = useContext(AuthContext);
+  console.log(updateUrl.photoURL);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleLogOut = () => {
     logOut()
@@ -85,12 +86,12 @@ const Navbar = () => {
             </button>
             <div className="relative inline-block group">
               <img
-                src="https://lh3.googleusercontent.com/a/AGNmyxYoZpZr3z629at42vhbr5aWTk9mhTWhyajofPABXQ=s96-c"
+                src={user?.photoURL?user?.photoURL:'https://lh3.googleusercontent.com/a/AGNmyxYoZpZr3z629at42vhbr5aWTk9mhTWhyajofPABXQ=s96-c'}
                 alt="User Picture"
                 className="w-12 h-12 rounded-full"
               />
               <div className="opacity-0 bg-white p-2 rounded-md shadow-md absolute bottom-0 left-0 group-hover:opacity-100">
-                <span className="text-gray-800">Mr..</span>
+                <span className="text-gray-800">{user?.displayName?user?.displayName:'No Name'}</span>
               </div>
             </div>
           </>
