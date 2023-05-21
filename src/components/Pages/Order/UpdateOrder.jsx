@@ -11,14 +11,14 @@ const UpdateOrder = () => {
 
     const form = event.target;
 
-    const toyName = form.toy.value;
+    const name = form.toy.value;
 
     const price = form.price.value;
     const details = form.details.value;
     const quantity = form.quantity.value;
     const newOrder = {
       price,
-      toyName,
+      name,
       quantity,
       details,
     };

@@ -54,7 +54,7 @@ const All_Toys = () => {
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://server-for-toy.vercel.app/toys")
+    fetch("https://server-for-toy.vercel.app/allToys")
       .then((response) => response.json())
       .then((data) => {
         setAllToys(data);
